@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: wayfinder-api
+    
+openai:
+  api:
+    key: api-key

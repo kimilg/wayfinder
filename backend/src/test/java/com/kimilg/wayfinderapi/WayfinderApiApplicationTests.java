@@ -1,0 +1,13 @@
+package com.kimilg.wayfinderapi;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class WayfinderApiApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
