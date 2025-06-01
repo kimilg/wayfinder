@@ -1,4 +1,5 @@
 # WayFinder Project
+This project uses Tiptap (MIT Licensed)
 
 ## 🧠 Backend (Spring Boot)
 ```bash
