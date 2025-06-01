@@ -1,0 +1,84 @@
+.editor-wrapper {
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 8px;
+  width: 600px;
+  min-height: 300px;
+  margin: 2rem auto;
+  background-color: white;
+}
+
+.editor-wrapper .ProseMirror {
+  text-align: left;
+}
+
+.ProseMirror [style*="text-align"] {
+  display: block;
+}
+
+.ProseMirror {
+  min-height: 200px;
+  cursor: text;
+  padding: 12px;
+}
+
+.ProseMirror:empty::before {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+}
+
+.menu-bar {
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  gap: 2px;
+}
+
+.menu-bar button {
+  background-color: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.menu-bar button:active {
+  background-color: #dcdcdc;
+}
+
+.menu-bar button:hover {
+  background-color: #e2e2e2;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar button.is-active {
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+li {
+  margin: 0.5rem 0;
+}
