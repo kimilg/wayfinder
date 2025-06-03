@@ -1,6 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
-import TipTapEditor from "../components/TipTapEditor.jsx";
+import TipTapEditorWithTags from "../components/TipTapEditorWithTags.jsx";
 
 function Write() {
   const [tags, setTags] = useState([]);
@@ -21,7 +21,7 @@ function Write() {
       <div className="min-h-screen bg-gray-100 p-10 font-sans">
         <h2 className="text-2xl font-bold mb-4">감정 분석기</h2>
 
-        <TipTapEditor onAnalyze={analyzeEmotion}/>
+        <TipTapEditorWithTags onAnalyze={analyzeEmotion}/>
 
         {tags.length > 0 && (
             <div className="mt-6">
