@@ -1,10 +1,10 @@
-package com.kimilg.wayfinderapi.editor.entity;
+package com.kimilg.wayfinderapi.document.dto;
 
 /**
  * @author Ilgoo.Kim
  */
 public record SaveHtmlResponse(
-    String id
+    Long id
 ) {
 
 }

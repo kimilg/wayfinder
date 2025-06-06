@@ -1,6 +1,4 @@
-package com.kimilg.wayfinderapi.emotion.entity;
-
-import lombok.Data;
+package com.kimilg.wayfinderapi.emotion.dto;
 
 /**
  * @author Ilgoo.Kim

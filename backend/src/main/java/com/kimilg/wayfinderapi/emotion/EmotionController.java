@@ -1,7 +1,7 @@
 package com.kimilg.wayfinderapi.emotion;
 
-import com.kimilg.wayfinderapi.emotion.entity.EmotionRequest;
-import com.kimilg.wayfinderapi.emotion.entity.EmotionResponse;
+import com.kimilg.wayfinderapi.emotion.dto.EmotionRequest;
+import com.kimilg.wayfinderapi.emotion.dto.EmotionResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
