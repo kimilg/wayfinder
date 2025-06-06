@@ -1,7 +1,10 @@
 spring:
+  profiles:
+    active: local
+    include: db
   application:
     name: wayfinder-api
     
 openai:
   api:
-    key: api-key
+    key: {api-key}

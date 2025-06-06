@@ -75,13 +75,13 @@ export default function TipTapEditorWithTags({onAnalyze}) {
                 </div>
                 <div className="flex flex-wrap gap-2 mt-2 w-full">
                   {tags.map((tag) => (
-                      <span
+                      <button
                           key={tag}
-                          className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-sm"
+                          className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-sm hover:text-red-700 cursor-pointer"
                           onClick={() => handleTagRemove(tag)}
                       >
-              {tag} ✕
-            </span>
+                        {tag} ✕
+                      </button>
                   ))}
                 </div>
               </div>
