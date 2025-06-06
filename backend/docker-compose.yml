@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16
+    container_name: local-postgres
+    environment:
+      POSTGRES_USER: kimilg
+      POSTGRES_PASSWORD: dlfrn30
+      POSTGRES_DB: wayfinder
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

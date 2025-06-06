@@ -1,7 +1,15 @@
 spring:
+  profiles:
+    active: local
+    include: db
   application:
     name: wayfinder-api
-    
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        max-page-size: 100
+
 openai:
   api:
-    key: api-key
+    key: {api-key}

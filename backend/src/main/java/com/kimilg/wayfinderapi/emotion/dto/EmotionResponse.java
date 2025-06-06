@@ -1,4 +1,4 @@
-package com.kimilg.wayfinderapi.emotion.entity;
+package com.kimilg.wayfinderapi.emotion.dto;
 
 import java.util.List;
 import org.springframework.util.CollectionUtils;

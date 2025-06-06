@@ -1,19 +1,13 @@
-/**
- * @(#)EmotionService.java 2025. 05. 31
- * <p>
- * Copyright 2025 Naver Corp. All rights Reserved. Naver PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
 package com.kimilg.wayfinderapi.emotion;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kimilg.wayfinderapi.emotion.entity.EmotionRequest;
-import com.kimilg.wayfinderapi.emotion.entity.EmotionResponse;
+import com.kimilg.wayfinderapi.emotion.dto.EmotionRequest;
+import com.kimilg.wayfinderapi.emotion.dto.EmotionResponse;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -27,7 +21,7 @@ public class EmotionService {
     private final WebClient openAiWebClient;
     
     public EmotionResponse extractTags(EmotionRequest request) {
-        String userInput = request.getText();
+        String userInput = request.text();
         
         Map<String, Object> systemMessage = Map.of(
             "role", "system",
