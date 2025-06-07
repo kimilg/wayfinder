@@ -8,6 +8,7 @@ import java.util.List;
  * @author Ilgoo.Kim
  */
 public record SaveHtmlRequest(
+    @NotBlank String title,
     @NotEmpty List<@NotBlank String> tagNames,
     @NotBlank String html) {
 }

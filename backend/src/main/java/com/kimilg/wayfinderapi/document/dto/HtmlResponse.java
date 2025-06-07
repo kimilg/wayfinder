@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
  */
 public record HtmlResponse(
     Long id,
+    String title,
     List<String> emotionTagNames,
     String htmlContent
 ) {
@@ -17,6 +18,6 @@ public record HtmlResponse(
         List<String> tagNames = doc.getEmotionTags().stream()
             .map(EmotionTag::getName)
             .collect(Collectors.toList());
-        return new HtmlResponse(doc.getId(), tagNames, doc.getContent());
+        return new HtmlResponse(doc.getId(), doc.getTitle(), tagNames, doc.getContent());
     }
 }
