@@ -7,16 +7,19 @@ export default function List() {
   const [page, setPage] = useState(0);
   
   useEffect(() => {
-    axios.get<PagedResponse<Document>>(`document/html?page=${page}&size=10`)
+    axios.get<PagedResponse<Document>>(`http://localhost:8080/document/html?page=${page}&size=10`)
       .then((res) => setDocuments(res.data.content))
       .catch(console.error)
+    
+    console.log('length: ', documents.length)
+    
   }, [page]);
   
   return (
       <div className="p-4">
         <h2 className="text-xl font-bold mb-4">글 목록</h2>
         <ul className="space-y-4">
-          {documents.map((document) => (
+          {documents?.map((document) => (
               <li key={document.id}
                   className="p-4 border rounded shadow hover:bg-gray-50">
                 <h3 className="text-lg font-semibold">{document.title}</h3>
