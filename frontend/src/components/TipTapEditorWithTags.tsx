@@ -2,12 +2,18 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline'
 import TextAlign from '@tiptap/extension-text-align'
-import MenuBar from './MenuBar'
+import MenuBar from './MenuBar.js'
 import './TipTapEditor.css';
-import TagInput from "./TagInput.jsx";
+import TagInput from "./TagInput";
 import {useEffect, useState} from "react";
+import {SubmitPayload} from "../types/document";
 
-export default function TipTapEditorWithTags({onAnalyze, onSubmit}) {
+interface TipTapEditorWithTagsProps {
+  readonly onAnalyze: (text: string) => void;
+  readonly onSubmit: (payload: SubmitPayload) => void;
+}
+
+export default function TipTapEditorWithTags({onAnalyze, onSubmit}: TipTapEditorWithTagsProps) {
   const [tags, setTags] = useState([]);
   const [title, setTitle] = useState('')
   
@@ -18,7 +24,7 @@ export default function TipTapEditorWithTags({onAnalyze, onSubmit}) {
   const editor = useEditor({
     extensions: [StarterKit.configure({
       heading: {levels: [1, 2]},
-      paragraph: true,
+      paragraph: {},
     }),
       Underline,
       TextAlign.configure({
@@ -35,7 +41,7 @@ export default function TipTapEditorWithTags({onAnalyze, onSubmit}) {
       alert("모든 필드를 입력해 주세요.");
       return;
     }
-    onSubmit({ title, html, tags })
+    onSubmit({ title, html: html ?? '', tags })
   }
 
   const handleAnalyze = () => {
@@ -47,7 +53,7 @@ export default function TipTapEditorWithTags({onAnalyze, onSubmit}) {
   
   const isValid = () => {
     const html = editor?.getHTML()
-    return title.trim() !== '' && tags.length > 0 && html.trim() !== '';
+    return title.trim() !== '' && tags.length > 0 && (html && html.trim()) !== '';
   } 
 
   return (
