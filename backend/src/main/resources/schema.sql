@@ -1,5 +1,10 @@
+DROP TABLE IF EXISTS html_document_emotion_tag;
+DROP TABLE IF EXISTS html_document;
+DROP TABLE IF EXISTS emotion_tag;
+
 CREATE TABLE html_document (
     id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()

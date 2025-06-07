@@ -10,5 +10,4 @@ import java.util.List;
 public record HtmlRequest(
     @NotEmpty List<@NotBlank String> tagNames
     ) {
-
 }

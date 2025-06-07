@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function MenuBar({ editor}) {
+export default function MenuBar({editor}) {
   if (!editor) return null;
   
   return (

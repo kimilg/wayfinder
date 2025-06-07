@@ -41,9 +41,10 @@ public class DocumentService {
         List<EmotionTag> tags = request.tagNames().stream()
             .map(name -> emotionTagRepository.findByName(name)
                 .orElseGet(() -> emotionTagRepository.save(new EmotionTag(name))))
-            .collect(Collectors.toList());
+            .toList();
 
         HtmlDocument doc = new HtmlDocument();
+        doc.setTitle(request.title());
         doc.setContent(request.html());
         doc.setEmotionTags(tags);
         
