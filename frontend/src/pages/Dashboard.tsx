@@ -21,6 +21,13 @@ export default function Dashboard() {
             <h2 className="text-xl font-semibold mb-2">감정 태그 기반 기록</h2>
             <p className="text-gray-600">"슬픔" 같은 태그에 어울리는 활동을 직접 작성해보세요.</p>
           </div>
+          <div
+              onClick={() => navigate('/list')}
+              className="cursor-pointer p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <h2 className="text-xl font-semibold mb-2">사용자 작성 데이터 목록</h2>
+            <p className="text-gray-600">사용자가 작성한 글 목록을 확인해보세요.</p>
+          </div>
         </div>
       </div>
   )

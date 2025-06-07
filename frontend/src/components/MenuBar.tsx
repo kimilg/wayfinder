@@ -1,6 +1,10 @@
 import React from 'react'
+import {Editor} from "@tiptap/react";
 
-export default function MenuBar({editor}) {
+interface MenuBarProps {
+  editor: Editor | undefined;
+}
+export default function MenuBar({editor}: MenuBarProps) {
   if (!editor) return null;
   
   return (

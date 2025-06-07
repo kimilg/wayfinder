@@ -1,11 +1,12 @@
 import {useState} from "react";
 import axios from "axios";
-import TipTapEditor from "../components/TipTapEditor.jsx";
+import TipTapEditorWithTags from "../components/TipTapEditorWithTags";
+import {SubmitPayload} from "../types/document";
 
-function Recommend() {
+function Write() {
   const [tags, setTags] = useState([]);
-
-  const analyzeEmotion = async (text) => {
+  
+  const analyzeEmotion = async (text: string) => {
     try {
       const response = await axios.post('http://localhost:8080/tags', {
         text: text
@@ -17,11 +18,29 @@ function Recommend() {
     }
   };
 
+  const submitDocument = async (payload: SubmitPayload) => {
+    try {
+      console.log('title: ', payload.title);
+      console.log(payload.html);
+      console.log('tags: ', payload.tags);
+      
+      const response = await axios.post('http://localhost:8080/document/html', {
+        title: payload.title,
+        tagNames: payload.tags,
+        html: payload.html
+      });
+      console.log('document id:', response.data.id, ' saved.')
+    } catch (err) {
+      console.error(err);
+      alert('html 문서 저장에 실패했습니다.');
+    }
+  };
+
   return (
       <div className="min-h-screen bg-gray-100 p-10 font-sans">
         <h2 className="text-2xl font-bold mb-4">감정 분석기</h2>
 
-        <TipTapEditor onAnalyze={analyzeEmotion}/>
+        <TipTapEditorWithTags onAnalyze={analyzeEmotion} onSubmit={submitDocument}/>
 
         {tags.length > 0 && (
             <div className="mt-6">
@@ -42,4 +61,4 @@ function Recommend() {
   );
 }
 
-export default Recommend
+export default Write

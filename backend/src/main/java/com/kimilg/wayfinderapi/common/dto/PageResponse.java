@@ -1,11 +1,15 @@
 package com.kimilg.wayfinderapi.common.dto;
 
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.data.domain.Page;
 
 /**
  * @author Ilgoo.Kim
  */
+@Getter
+@AllArgsConstructor
 public class PageResponse<T> {
     private List<T> content;
     private int page;

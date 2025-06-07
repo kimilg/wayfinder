@@ -2,14 +2,18 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline'
 import TextAlign from '@tiptap/extension-text-align'
-import MenuBar from './MenuBar'
+import MenuBar from './MenuBar.js'
 import './TipTapEditor.css';
 
-export default function TipTapEditor({onAnalyze}) {
+interface TipTapEditorProp {
+  readonly onAnalyze: (text: string) => void;
+}
+
+export default function TipTapEditor({onAnalyze}: TipTapEditorProp) {
   const editor = useEditor({
     extensions: [StarterKit.configure({
       heading: {levels: [1, 2]},
-      paragraph: true,
+      paragraph: {},
     }),
       Underline,
       TextAlign.configure({

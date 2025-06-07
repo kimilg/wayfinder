@@ -15,7 +15,6 @@ import com.kimilg.wayfinderapi.document.repository.HtmlDocumentRepository;
 import com.kimilg.wayfinderapi.emotion.entity.EmotionTag;
 import com.kimilg.wayfinderapi.emotion.repository.EmotionTagRepository;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,8 +28,14 @@ import org.springframework.stereotype.Service;
 public class DocumentService {
     private final HtmlDocumentRepository htmlDocumentRepository;
     private final EmotionTagRepository emotionTagRepository;
+
+    public PageResponse<HtmlResponse> getAll(Pageable pageable) {
+        Page<HtmlResponse> htmlResponsePage = htmlDocumentRepository.findAll(pageable)
+            .map(HtmlResponse::from);
+        return new PageResponse<>(htmlResponsePage);
+    }
     
-    public PageResponse<HtmlResponse> get(HtmlRequest request, Pageable pageable) {
+    public PageResponse<HtmlResponse> getByTags(HtmlRequest request, Pageable pageable) {
         List<String> tagNames = request.tagNames();
         Page<HtmlResponse> htmlResponsePage = htmlDocumentRepository.findByEmotionTags(tagNames, tagNames.size(), pageable)
             .map(HtmlResponse::from);
