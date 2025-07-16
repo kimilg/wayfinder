@@ -5,7 +5,7 @@
  * 작성일: 2024-12-19
  */
 
-package com.kimilg.wayfinderapi.ai.question;
+package com.kimilg.wayfinderapi.ai.question.initial;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -10,9 +10,11 @@ interface TipTapEditorProp {
   readonly onAnalyze: (text: string) => void;
   readonly fullscreen?: boolean;
   readonly initialContent?: string;
+  readonly onCommandEnter?: () => void;
+  readonly onEditorReady?: (editor: any) => void;
 }
 
-export default function TipTapEditor({onAnalyze, fullscreen = false, initialContent = ''}: TipTapEditorProp) {
+export default function TipTapEditor({onAnalyze, fullscreen = false, initialContent = '', onCommandEnter, onEditorReady}: TipTapEditorProp) {
   const editor = useEditor({
     extensions: [StarterKit.configure({
       heading: {levels: [1, 2]},
@@ -26,12 +28,69 @@ export default function TipTapEditor({onAnalyze, fullscreen = false, initialCont
     content: initialContent,
   });
 
-  // initialContent가 변경될 때 에디터 내용 업데이트
+  // 에디터가 준비되면 부모 컴포넌트에 전달
+  useEffect(() => {
+    if (editor && onEditorReady) {
+      onEditorReady(editor);
+    }
+  }, [editor, onEditorReady]);
+
+  // Command+Enter 키보드 이벤트 처리
+  useEffect(() => {
+    if (!editor || !onCommandEnter) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Command+Enter (Mac) 또는 Ctrl+Enter (Windows) 감지
+      if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
+        event.preventDefault();
+        onCommandEnter();
+      }
+    };
+
+    // 에디터 요소에 이벤트 리스너 추가
+    const editorElement = editor.view.dom;
+    editorElement.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      editorElement.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [editor, onCommandEnter]);
+
+  // initialContent가 변경될 때 에디터 내용 업데이트 및 자동 스크롤
   useEffect(() => {
     if (editor && initialContent && initialContent !== editor.getHTML()) {
       editor.commands.setContent(initialContent);
+      
+      // 내용 업데이트 후 자동 스크롤
+      setTimeout(() => {
+        const editorElement = editor.view.dom;
+        if (editorElement) {
+          editorElement.scrollTop = editorElement.scrollHeight;
+        }
+      }, 100);
     }
   }, [editor, initialContent]);
+
+  // 에디터 내용 변경 시 자동 스크롤
+  useEffect(() => {
+    if (!editor) return;
+
+    const handleUpdate = () => {
+      const editorElement = editor.view.dom;
+      if (editorElement) {
+        // 약간의 지연을 두어 내용이 완전히 렌더링된 후 스크롤
+        setTimeout(() => {
+          editorElement.scrollTop = editorElement.scrollHeight;
+        }, 50);
+      }
+    };
+
+    editor.on('update', handleUpdate);
+
+    return () => {
+      editor.off('update', handleUpdate);
+    };
+  }, [editor]);
 
   const handleAnalyze = () => {
     const plainText = editor?.getText();
