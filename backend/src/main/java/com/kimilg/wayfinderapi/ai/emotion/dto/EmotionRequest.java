@@ -1,4 +1,4 @@
-package com.kimilg.wayfinderapi.emotion.dto;
+package com.kimilg.wayfinderapi.ai.emotion.dto;
 
 /**
  * @author Ilgoo.Kim

@@ -28,6 +28,12 @@ export default function Dashboard() {
             <h2 className="text-xl font-semibold mb-2">사용자 작성 데이터 목록</h2>
             <p className="text-gray-600">사용자가 작성한 글 목록을 확인해보세요.</p>
           </div>
+          <div
+              onClick={() => navigate('/write-with-ai')}
+              className="cursor-pointer p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
+          >
+            <h2 className="text-xl font-semibold mb-2">AI 질문 공세</h2>
+          </div>
         </div>
       </div>
   )

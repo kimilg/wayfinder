@@ -3,6 +3,7 @@ import Dashboard from "../pages/Dashboard";
 import Recommend from "../pages/Recommend";
 import Write from "../pages/Write";
 import List from "../pages/List";
+import WriteWithAI from "../pages/WriteWithAI";
 
 export default function AppRoutes() {
   return (
@@ -11,6 +12,7 @@ export default function AppRoutes() {
         <Route path="/recommend" element={<Recommend />} />
         <Route path="/write" element={<Write />} />
         <Route path="/list" element={<List />} />
+        <Route path="/write-with-ai" element={<WriteWithAI />} />
       </Routes>
   )
 }

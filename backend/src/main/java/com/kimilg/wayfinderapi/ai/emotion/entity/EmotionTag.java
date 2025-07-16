@@ -1,7 +1,7 @@
-package com.kimilg.wayfinderapi.emotion.entity;
+package com.kimilg.wayfinderapi.ai.emotion.entity;
 
 import com.kimilg.wayfinderapi.document.entity.HtmlDocument;
-import com.kimilg.wayfinderapi.emotion.repository.EmotionTagRepository;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

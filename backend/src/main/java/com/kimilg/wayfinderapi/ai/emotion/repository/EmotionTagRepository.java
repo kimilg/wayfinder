@@ -1,6 +1,6 @@
-package com.kimilg.wayfinderapi.emotion.repository;
+package com.kimilg.wayfinderapi.ai.emotion.repository;
 
-import com.kimilg.wayfinderapi.emotion.entity.EmotionTag;
+import com.kimilg.wayfinderapi.ai.emotion.entity.EmotionTag;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
