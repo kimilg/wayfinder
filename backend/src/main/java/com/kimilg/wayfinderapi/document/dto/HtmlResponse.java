@@ -1,7 +1,7 @@
 package com.kimilg.wayfinderapi.document.dto;
 
 import com.kimilg.wayfinderapi.document.entity.HtmlDocument;
-import com.kimilg.wayfinderapi.emotion.entity.EmotionTag;
+import com.kimilg.wayfinderapi.ai.emotion.entity.EmotionTag;
 import java.util.List;
 
 /**

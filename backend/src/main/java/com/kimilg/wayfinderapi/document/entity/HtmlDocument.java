@@ -1,6 +1,6 @@
 package com.kimilg.wayfinderapi.document.entity;
 
-import com.kimilg.wayfinderapi.emotion.entity.EmotionTag;
+import com.kimilg.wayfinderapi.ai.emotion.entity.EmotionTag;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

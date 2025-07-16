@@ -1,10 +1,10 @@
-package com.kimilg.wayfinderapi.emotion;
+package com.kimilg.wayfinderapi.ai.emotion;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kimilg.wayfinderapi.emotion.dto.EmotionRequest;
-import com.kimilg.wayfinderapi.emotion.dto.EmotionResponse;
+import com.kimilg.wayfinderapi.ai.emotion.dto.EmotionRequest;
+import com.kimilg.wayfinderapi.ai.emotion.dto.EmotionResponse;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;

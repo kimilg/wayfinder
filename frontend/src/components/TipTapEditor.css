@@ -8,6 +8,19 @@
   background-color: white;
 }
 
+/* AI 글쓰기 페이지용 전체 화면 에디터 스타일 */
+.editor-wrapper.fullscreen {
+  width: 100%;
+  max-width: 1200px; /* 최대 너비 제한 */
+  height: 100vh;
+  margin: 0 auto; /* 중앙 정렬 */
+  border-radius: 0;
+  border: none;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
 .editor-wrapper .ProseMirror {
   text-align: left;
 }
@@ -20,6 +33,49 @@
   min-height: 200px;
   cursor: text;
   padding: 12px;
+}
+
+/* 전체 화면 모드에서 에디터 영역 확장 */
+.editor-wrapper.fullscreen .ProseMirror {
+  flex: 1;
+  min-height: calc(100vh - 120px); /* 메뉴바 높이를 제외한 전체 높이에서 약간 줄임 */
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #fefce8; /* 노란색 배경 */
+  overflow-y: auto; /* 세로 스크롤바 추가 */
+  max-height: calc(100vh - 120px); /* 최대 높이 제한 */
+  max-width: 100%; /* 최대 너비 제한 */
+  word-wrap: break-word; /* 긴 단어 줄바꿈 */
+  overflow-wrap: break-word; /* 긴 단어 줄바꿈 (최신 브라우저) */
+  white-space: pre-wrap; /* 공백과 줄바꿈 보존하면서 자동 줄바꿈 */
+}
+
+/* AI 질문과 사용자 답변의 줄바꿈 처리 */
+.editor-wrapper.fullscreen .ProseMirror p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
+}
+
+/* 스크롤바 스타일링 */
+.editor-wrapper.fullscreen .ProseMirror::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor-wrapper.fullscreen .ProseMirror::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.editor-wrapper.fullscreen .ProseMirror::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.editor-wrapper.fullscreen .ProseMirror::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
 .ProseMirror:empty::before {
@@ -43,8 +99,8 @@
   border-radius: 6px;
   padding: 6px 12px;
   font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.2s, box-shadow 0.2s;
+  font-weight: bold;
+  margin: 1rem 0;
 }
 
 .menu-bar button:active {
