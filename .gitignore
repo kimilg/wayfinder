@@ -2,6 +2,7 @@
 /backend/build/
 /backend/.gradle/
 /backend/out/
+/backend/pgdata
 
 # Logs
 logs
